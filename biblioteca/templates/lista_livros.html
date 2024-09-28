@@ -1,0 +1,17 @@
+{% load static %}
+
+{% block style %}
+    <link rel="stylesheet" href="{% static "css/lista_l.css" %}">
+{% endblock style %}
+
+<h1>Lista de Livros</h1>
+<ul>
+    {% for livro in livros %}
+    <li>
+        {{ livro.titulo }} - {{ livro.status }}
+        <a href="{% url 'registrar_emprestimo' livro.id %}">Emprestar</a>   
+    </li>
+    
+    {% endfor %}
+</ul>
+<a href="{% url 'adicionar_livro' %}">Adicionar novo livro</a>
