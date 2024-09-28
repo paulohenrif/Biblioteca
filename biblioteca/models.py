@@ -2,8 +2,8 @@ from django.db import models
 
 class Livro(models.Model):
     codigo = models.CharField(max_length=50, unique=True)
-    titulo = models.CharField(max_length=50 )
-    autor = models.CharField(max_length=50)
+    titulo = models.CharField(max_length=200)
+    autor = models.CharField(max_length=100)
     exemplares = models.IntegerField()
     status = models.CharField(max_length=20, choices=[('disponível', 'Disponível'), ('emprestado', 'Emprestado')])
 
@@ -42,4 +42,4 @@ class Emprestimo(models.Model):
     cod_livro = models.ForeignKey(Livro, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.codigo
+        return f'Data do empréstimo do livro: {self.cod_livro.titulo}'
