@@ -1,0 +1,27 @@
+{% load static %}
+
+{% block style %}
+    <link rel="stylesheet" href="{% static 'css/emprestimo.css' %}">
+    <title>Empréstimo</title>
+{% endblock style %}
+
+<h1>Fazer empréstimo</h1>
+<form method="POST">
+    {% csrf_token %}
+    
+    <label for="livro">Livro:</label>
+    <select name="livro_id" id="livro">
+        {% for livro in livros %}
+            <option value="{{ livro.id }}">{{ livro.titulo }}</option>
+        {% endfor %}
+    </select>
+
+    <label for="usuario">Usuário:</label>
+    <select name="usuario_id" id="usuario">
+        {% for usuario in usuarios %}
+            <option value="{{ usuario.id }}">{{ usuario.nome }}</option>
+        {% endfor %}
+    </select>
+
+    <button type="submit">Solicitar Empréstimo</button>
+</form>

@@ -1,0 +1,19 @@
+{% load static %}
+
+{% block style %}
+    <link rel="stylesheet" href="{% static 'css/cadastrar_usuario.css' %}">
+    <title>Cadastro de usuário</title>
+{% endblock style %}
+
+<h1>Cadastrar Usuário</h1>
+<form method="POST">
+    {% csrf_token %}
+    <label for="nome">Nome:</label>
+    <input type="text" name="nome" id="nome" required autocomplete="none">
+    <label for="email">Email:</label>
+    <input type="email" name="email" id="email" required autocomplete="none">
+    <button type="submit">Criar</button>
+</form>
+
+<a href="{% url 'lista_pessoas' %}">Lista de usuários</a>
+<a href="{% url 'Home' %}">Voltar a página principal</a>

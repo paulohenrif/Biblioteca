@@ -11,11 +11,17 @@ class Livro(models.Model):
     
 class Pessoa(models.Model):
     nome = models.CharField(max_length=100)
-    email = models.EmailField(max_length=254)
-    matricula = models.CharField(max_length=50)
+    email = models.EmailField(max_length=254, unique=True)
+    matricula = models.IntegerField(unique=True, blank=True, null=True)
 
-    def __str__(self):
-        return self.nome
+    def save(self, *args, **kwargs):
+        if not self.matricula:
+            ultimo_id = Pessoa.objects.all().order_by('-matricula').first()
+            if ultimo_id:
+                self.matricula = ultimo_id.matricula + 1
+            else:
+                self.matricula = 1
+        super(Pessoa, self).save(*args, **kwargs)
     
 class Administrador(models.Model):
     funcao = models.CharField(max_length=50)
@@ -33,10 +39,11 @@ class Usuario(models.Model):
         return self.curso
 
 class Emprestimo(models.Model):
-    data = models.DateField(auto_now=False, auto_now_add=False)
-    hora = models.TimeField(auto_now=False, auto_now_add=False)
-    cod_usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
-    cod_livro = models.ForeignKey(Livro, on_delete=models.CASCADE)
+    data_emprestimo = models.DateTimeField()
+    data_devolucao = models.DateTimeField(null=True, blank=True)
+    pessoa = models.ForeignKey(Pessoa, on_delete=models.CASCADE)
+    usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
+    livro = models.ForeignKey(Livro, on_delete=models.CASCADE)
 
     def __str__(self):
         return f'Data do empréstimo do livro: {self.cod_livro.titulo}'

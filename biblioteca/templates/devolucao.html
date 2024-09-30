@@ -1,0 +1,13 @@
+{% load static %}
+
+{% block style %}
+    <link rel="stylesheet" href="{% static 'css/lista_l.css' %}">
+    <title>Devolução</title>
+{% endblock style %}
+
+<form method="POST" action="{% url 'devolver' %}">
+    {% csrf_token %}
+    <label for="pessoa_id">ID da Pessoa:</label>
+    <input type="text" name="pessoa_id" required>
+    <button type="submit">Devolver</button>
+</form>

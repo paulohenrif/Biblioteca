@@ -1,0 +1,28 @@
+{% load static %}
+
+{% block style %}
+    <link rel="stylesheet" href="{% static 'css/lista_p.css' %}">
+    <title>Consultar Usuários</title>
+
+{% endblock style %}
+
+<h1>Lista de Pessoas</h1>
+<table>
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Matrícula</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for pessoa in pessoas %}
+        <tr>
+            <td>{{ pessoa.nome }}</td>
+            <td>{{ pessoa.matricula }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<a href="{% url 'cadastrar_usuario' %}">Adicionar Nova Pessoa</a>
+<a href="{% url 'Home' %}">Voltar a página principal</a>

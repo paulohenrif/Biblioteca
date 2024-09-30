@@ -2,22 +2,24 @@
 
 {% block style %}
     <link rel="stylesheet" href="{% static 'css/lista_l.css' %}">
+    <title>Consulta do Acervo</title>
 {% endblock style %}
 
-<h1>Lista de Livros</h1>
+<h1>Acervo de Livros</h1>
 <ul class="lista-livros">
     {% for livro in livros %}
         <li class="livro-item">
             <div class="detalhes-livro">
                 <span class="livro-titulo">{{ livro.titulo }}</span><br>
                 {{ livro.autor }}<br>
-                {{ livro.exemplares }}
+                
             </div>
             <div class="emprestimo">
-                <a href="{% url 'registrar_emprestimo' livro.id %}" class="botao-emprestar">Emprestar</a>
-                <span class="status">{{ livro.status }}</span>
+                <a href="{% url 'solicitar_emprestimo' %}" class="botao-emprestar">Emprestar</a>
+                <span class="status">{{ livro.exemplares }} • {{ livro.status }}</span>
             </div>
         </li>
-    {% endfor %}
-</ul>
-<a href="{% url 'adicionar_livro' %}">Adicionar novo livro</a>
+        {% endfor %}
+    </ul>
+<a href="{% url 'cadastrar_livro' %}">Adicionar novo livro</a> <br>
+<a href="{% url 'Home' %}">Voltar a página principal</a>
