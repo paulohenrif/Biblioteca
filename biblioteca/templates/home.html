@@ -17,11 +17,11 @@
         <h1>Página Principal</h1>
             <ul>
                 <li><a href="{% url 'cadastrar_usuario' %}">Cadastrar Usuário</a></li>
-                <li><a href="{% url 'lista_pessoas' %}">Consultar Usuários</a></li>
                 <li><a href="{% url 'cadastrar_livro' %}">Cadastrar Livro</a></li>
-                <li><a href="{% url 'lista_livros' %}">Consultar Acervo</a></li>
+                <li><a href="{% url 'consultar_usuarios' %}">Consultar Usuários</a></li>
+                <li><a href="{% url 'consultar_acervo' %}">Consultar Acervo</a></li>
                 <li><a href="{% url 'solicitar_emprestimo' %}">Solicitar Empréstimo</a></li>
-                <li><a href="{% url 'devolucao' %}">Devolver Livro</a></li>
+                <li><a href="{% url 'solicitar_devolucao' %}">Devolver Livro</a></li>
                 {% comment %} <li><a href="{% url 'alterar_usuario' %}">Alterar Dados do Usuário</a></li>
                 <li><a href="{% url 'remover_usuario' %}">Remover Usuário</a></li> {% endcomment %}
             </ul>

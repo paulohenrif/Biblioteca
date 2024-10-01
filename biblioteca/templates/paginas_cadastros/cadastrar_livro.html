@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    {% block style %}
+        <link rel="stylesheet" href="{% static 'css/add_l.css' %}">
+    {% endblock style %}
+
+    <title>Cadastro de Livro</title>
+</head>
+<body>
+    {% block main %}
+        <form method="post" id="form">
+            {% csrf_token %}
+            <label for="titulo">Título:</label>
+            <input type="text" id="titulo" name="titulo" autocomplete="none" placeholder="Harry Potter" required>
+                <br>
+            <label for="autor">Autor:</label>
+            <input type="text" id="autor" name="autor" autocomplete="none" placeholder="J.K Rowling" required>
+                <br>
+            <label for="exemplares">Exemplares:</label>
+            <input type="number" id="exemplares" name="exemplares" min="1" autocomplete="none" placeholder="3" required>
+                <br>
+            <button type="submit">Cadastrar Livro</button>
+        </form>
+    {% endblock main %}
+</body>
+</html>

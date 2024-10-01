@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from biblioteca.models import Livro, Emprestimo, Pessoa
+from biblioteca.models import Livro, Emprestimo, Pessoa, Usuario
 from pyexpat.errors import messages
 
 def Home(request):
@@ -11,9 +11,9 @@ def cadastrar_usuario(request):
         email = request.POST.get('email')
         if nome:
             Pessoa.objects.create(nome=nome, email=email)
-        return redirect('lista_pessoas')
+        return redirect('consultar_usuarios')
     
-    return render(request, 'cadastrar_usuario.html')
+    return render(request, 'paginas_cadastros/cadastrar_usuario.html')
 
 def cadastrar_livro(request):
     if request.method == 'POST':
@@ -21,12 +21,16 @@ def cadastrar_livro(request):
         autor = request.POST.get('autor')
         exemplares = request.POST.get('exemplares')
         Livro.objects.create(titulo=titulo, autor=autor, exemplares=exemplares, status='disponível')
-        return redirect('lista_livros')
-    return render(request, 'cadastrar_livro.html')
+        return redirect('consultar_acervo')
+    return render(request, 'paginas_cadastros/cadastrar_livro.html')
 
-def lista_livros(request):
+def consultar_usuarios(request):
+    pessoas = Pessoa.objects.all()
+    return render(request, 'paginas_consultas/consultar_usuarios.html', {'pessoas': pessoas})
+    
+def consultar_acervo(request):
     livros = Livro.objects.all()
-    return render(request, 'lista_livros.html', {'livros': livros})
+    return render(request, 'paginas_consultas/consultar_acervo.html', {'livros': livros})
 
 def solicitar_emprestimo(request):
     if request.method == 'POST':
@@ -43,17 +47,13 @@ def solicitar_emprestimo(request):
         else:
             messages.error(request, 'Não há exemplares disponíveis para empréstimo.')
 
-        return redirect('lista_livros')
+        return redirect('consultar_acervo')
 
     livros = Livro.objects.all()
     pessoas = Pessoa.objects.all()
 
-    return render(request, 'solicitar_emprestimo.html', {'livros': livros, 'usuarios': pessoas})
+    return render(request, 'paginas_solicitacoes/solicitar_emprestimo.html', {'livros': livros, 'usuarios': pessoas})
 
-def devolucao(request, livro_id):
+def solicitar_devolucao(request, livro_id):
     livro = Livro.objects.get(id=livro_id)
-    return render(request, 'devolucao.html', {'livro': livro})
-
-def lista_pessoas(request):
-    pessoas = Pessoa.objects.all()
-    return render(request, 'lista_pessoas.html', {'pessoas': pessoas})
+    return render(request, 'paginas_solicitacoes/solicitar_devolucao.html', {'livro': livro})
