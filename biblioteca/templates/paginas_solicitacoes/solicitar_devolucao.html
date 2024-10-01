@@ -1,14 +1,35 @@
 {% load static %}
 
-{% block style %}
-    <link rel="stylesheet" href="{% static 'css/lista_l.css' %}">
-    <title>Devolução</title>
-{% endblock style %}
-
-<form method="POST" action="{% url 'solicitar_devolucao' livro.id %}">
-    {% csrf_token %}
-    <label for="pessoa_id">ID da Pessoa:</label>
-    <input type="text" name="pessoa_id" required>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <button type="submit">Devolver</button>
-</form>
+    {% block style %}
+        <link rel="stylesheet" href="{% static 'css/solicitar_devolucao.css' %}">
+    {% endblock style %}
+
+    <title>Devolução de Livro</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Solicitar Devolução de Livro</h1>
+
+        <form method="POST" action="{% url 'solicitar_devolucao' %}">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="usuario_id">ID da Pessoa:</label>
+                <input type="text" id="usuario_id" name="usuario_id" placeholder="Digite o ID do usuário" required>
+            </div>
+
+            <div class="form-group">
+                <label for="livro_id">ID do Livro:</label>
+                <input type="text" id="livro_id" name="livro_id" placeholder="Digite o ID do livro" required>
+            </div>
+
+            <button type="submit" class="submit-btn">Devolver Livro</button>
+        </form>
+    </div>
+</body>
+</html>
