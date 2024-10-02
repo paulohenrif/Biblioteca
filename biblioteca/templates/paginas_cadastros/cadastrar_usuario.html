@@ -1,21 +1,32 @@
 {% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-{% block style %}
-    <link rel="stylesheet" href="{% static 'css/cadastrar_usuario.css' %}">
-    <title>Cadastro de usuário</title>
-{% endblock style %}
-
-<h1>Cadastrar Usuário</h1>
-<form method="POST">
-    {% csrf_token %}
-    <label for="nome">Nome:</label>
-    <input type="text" name="nome" id="nome" required autocomplete="none" placeholder="Samara Martins">
-
-    <label for="email">Email:</label>
-    <input type="email" name="email" id="email" required autocomplete="none" placeholder="example@gmail.com">
-    
-    <button type="submit">Criar</button>
-</form>
-
-<a href="{% url 'consultar_usuarios' %}">Lista de usuários</a>
-<a href="{% url 'Home' %}">Voltar a página principal</a>
+    {% block style %}
+        <link rel="stylesheet" href="{% static 'css/css_cadastro/cadastro.css' %}">
+    {% endblock style %}
+        
+    <title>Cadastro de Usuário</title>
+</head>
+<body>
+    {% block main %}
+        <form method="POST" id="form">
+            <h1>Cadastro de Usuário</h1>
+            {% csrf_token %}
+            <label for="nome">Nome:</label>
+            <input type="text" name="nome" id="nome" required autocomplete="none" placeholder="Samara Martins">
+        
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email" required autocomplete="none" placeholder="example@gmail.com">
+            
+            <button type="submit" id="buttons">Criar</button>
+            <a href="{% url 'consultar_usuarios' %}">Lista de usuários</a>
+            <a href="{% url 'Home' %}" >Voltar a página principal</a>
+        </form>
+        
+    {% endblock main %}
+</body>
+</html>

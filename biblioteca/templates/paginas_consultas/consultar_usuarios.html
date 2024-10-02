@@ -1,15 +1,16 @@
 {% load static %}
 
 {% block style %}
-    <link rel="stylesheet" href="{% static 'css/lista_p.css' %}">
-    <title>Consultar Usuários</title>
-
+    {% comment %} <link rel="stylesheet" href="{% static 'css/lista_p.css' %}"> {% endcomment %}
 {% endblock style %}
+
+<title>Consultar Usuários</title>
 
 <h1>Lista de Pessoas</h1>
 <table>
     <thead>
         <tr>
+            <th>ID</th>
             <th>Nome</th>
             <th>Matrícula</th>
         </tr>
@@ -17,6 +18,7 @@
     <tbody>
         {% for usuario in usuarios %}
         <tr>
+            <td>{{ usuario.id }}</td>
             <td>{{ usuario.nome }}</td>
             <td>{{ usuario.matricula }}</td>
         </tr>

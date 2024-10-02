@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect
-from biblioteca.models import Livro, Usuario, Emprestimo 
-from pyexpat.errors import messages
+from biblioteca.models import Livro, Usuario, Emprestimo
 from django.http import HttpResponse
 
 def Home(request):

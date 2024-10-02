@@ -7,14 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     {% block style %}
-        <link rel="stylesheet" href="{% static 'css/solicitar_devolucao.css' %}">
+        <link rel="stylesheet" href="{% static 'css/css_solicitacoes/solicitacoes.css' %}">
     {% endblock style %}
 
     <title>Devolução de Livro</title>
 </head>
 <body>
     <div class="container">
-        <h1>Solicitar Devolução de Livro</h1>
+        <h1>Solicitar Devolução do Livro</h1>
 
         <form method="POST" action="{% url 'solicitar_devolucao' %}">
             {% csrf_token %}

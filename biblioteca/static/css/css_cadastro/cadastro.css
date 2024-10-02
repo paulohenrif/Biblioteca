@@ -1,8 +1,15 @@
+@charset "UTF-8";
+
 body {
     font-family: Arial, Helvetica, sans-serif;
-    background-color: #f7f8fc;
+    background-color: #f5f5f5;
     margin: 0;
-    padding: 20px;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-size: 20px;
 }
 
 h1 {
@@ -11,23 +18,25 @@ h1 {
     font-size: 2em;
 }
 
-form {
+form, #form {
+    display: block;
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     max-width: 400px;
+    width: 100%;
     margin: 0 auto;
 }
 
-form label {
+label, form label {
+    font-weight: bold;
     display: block;
     margin-bottom: 8px;
     color: #333;
-    font-weight: bold;
 }
 
-form input {
+input[type="text"], input[type="number"], form input {
     width: 100%;
     padding: 10px;
     margin-bottom: 20px;
@@ -36,33 +45,39 @@ form input {
     box-sizing: border-box;
     font-size: 1em;
     color: #333;
+    transition: border-color 0.3s ease;
 }
 
-form input:focus {
+input[type="text"]:focus, input[type="number"]:focus, form input:focus {
     border-color: #66b3ff;
     outline: none;
 }
 
-form button {
-    width: 100%;
-    padding: 12px;
-    background-color: #66b3ff;
-    color: white;
+input[type="number"]::-webkit-outer-spin-button, 
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+#buttons, form #buttons {
+    background-color: #ffb066;
+    color: #fff;
     border: none;
+    padding: 12px;
     border-radius: 4px;
-    font-size: 1em;
-    font-weight: bold;
     cursor: pointer;
+    font-size: 1em;
+    width: 100%;
+    font-weight: bold;
     transition: background-color 0.3s ease;
 }
 
-form button:hover {
-    background-color: #005bb5;
+#buttons:hover, form #buttons:hover {
+    background-color: #ff9839;
 }
 
 a {
     display: block;
-    width: 200px;
     margin: 20px auto;
     padding: 10px;
     background-color: #66b3ff;
@@ -71,19 +86,20 @@ a {
     text-decoration: none;
     border-radius: 4px;
     font-weight: bold;
+    transition: 0.3s ease;
 }
 
 a:hover {
-    background-color: #005bb5;
+    background-color: #005bb5c3;
 }
 
 @media (max-width: 600px) {
-    form {
-        width: 100%;
+    form, #form {
         padding: 10px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     }
 
-    a {
-        width: 100%;
+    label, input[type="text"], input[type="number"], #buttons, form input {
+        font-size: 14px;
     }
 }

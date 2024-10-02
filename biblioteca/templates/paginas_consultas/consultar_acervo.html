@@ -1,7 +1,7 @@
 {% load static %}
 
 {% block style %}
-    <link rel="stylesheet" href="{% static 'css/lista_l.css' %}">
+    <link rel="stylesheet" href="{% static 'css/css_consulta/consulta.css' %}">
     <title>Consulta do Acervo</title>
 {% endblock style %}
 
@@ -10,8 +10,11 @@
     {% for livro in livros %}
         <li class="livro-item">
             <div class="detalhes-livro">
-                <span class="livro-titulo">{{ livro.titulo }}</span><br>
-                {{ livro.autor }}<br>
+                <span class="livro-titulo"><strong>Titulo:</strong> {{ livro.titulo }}</span><br>
+                
+                <strong>Autor:</strong> {{ livro.autor }}<br>
+
+                <strong>Id:</strong> {{livro.id}} <br>
                 
             </div>
             <div class="emprestimo">

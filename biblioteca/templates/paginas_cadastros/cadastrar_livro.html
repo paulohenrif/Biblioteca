@@ -6,14 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     {% block style %}
-        <link rel="stylesheet" href="{% static 'css/add_l.css' %}">
+        <link rel="stylesheet" href="{% static 'css/css_cadastro/cadastro.css' %}">
     {% endblock style %}
 
     <title>Cadastro de Livro</title>
 </head>
 <body>
     {% block main %}
-        <form method="post" id="form">
+        <form method="POST" id="form">
+            <h1>Cadastro de Livro</h1>
             {% csrf_token %}
             <label for="titulo">Título:</label>
             <input type="text" id="titulo" name="titulo" autocomplete="none" placeholder="Harry Potter" required>
@@ -24,7 +25,9 @@
             <label for="exemplares">Exemplares:</label>
             <input type="number" id="exemplares" name="exemplares" min="1" autocomplete="none" placeholder="3" required>
                 <br>
-            <button type="submit">Cadastrar Livro</button>
+            <button type="submit" id="buttons">Cadastrar Livro</button>
+            <a href="{% url 'consultar_acervo' %}">Consultar Acervo</a>
+            <a href="{% url 'Home' %}" >Voltar a página principal</a>
         </form>
     {% endblock main %}
 </body>

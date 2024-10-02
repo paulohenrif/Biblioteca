@@ -51,30 +51,6 @@ input[type="text"]:focus {
 .submit-btn:hover {
     background-color: #005bb5;
 }
-.notification {
-    visibility: hidden;
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: #444;
-    color: white;
-    padding: 16px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    z-index: 1000;
-    transition: visibility 0s, opacity 0.5s linear;
-    opacity: 0;
-}
-.notification.show {
-    visibility: visible;
-    opacity: 1;
-}
-.close-btn {
-    margin-left: 15px;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-}
 @media (max-width: 600px) {
     .container {
         padding: 15px;
