@@ -1,69 +1,78 @@
-@charset "UTF-8";
-
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     background-color: #f5f5f5;
+    margin: 0;
+    padding: 20px;
 }
+
 h1 {
     text-align: center;
     color: #333;
     margin-bottom: 20px;
 }
-ul {
-    list-style: none;
-    padding: 0;
+
+table {
+    width: 100%;
     max-width: 600px;
-    margin: 0 auto;
-}
-li {
+    margin: 0 auto 20px;
+    border-collapse: collapse;
     background-color: #fff;
-    padding: 15px;
-    margin: 10px 0;
-    border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
 }
-li:hover {
-    background-color: #f0f8ff;
+
+thead th {
+    background-color: #66b3ff;
+    color: white;
+    padding: 12px;
+    text-align: left;
+    font-weight: bold;
 }
+
+tbody td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+    color: #333;
+    text-align: left;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
 a {
     display: block;
-    text-align: center;
-    background-color: #66b3ff;
-    color: #fff;
-    padding: 10px 20px;
-    border-radius: 4px;
-    text-decoration: none;
-    font-size: 1rem;
-    font-weight: bold;
-    margin-top: 20px;
     max-width: 200px;
-    margin: auto;
+    margin: 10px auto;
+    padding: 10px 20px;
+    background-color: #66b3ff;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: bold;
 }
+
 a:hover {
     background-color: #005bb5;
+    transition: background-color 0.3s ease;
 }
-.emprestimo {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-}
-.status {
-    font-size: 12px;
-    color: green;
-    margin-top: 5px;
-}
+
 @media (max-width: 600px) {
-    li {
-        flex-direction: column;
-        align-items: center;
+    table {
+        width: 100%;
     }
 
-    .emprestimo {
-        margin-top: 10px;
+    tbody td, thead th {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    a {
         width: 100%;
-        text-align: center;
+        padding: 12px;
     }
 }

@@ -1,7 +1,7 @@
 {% load static %}
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,7 +28,10 @@
                 <input type="text" id="livro_id" name="livro_id" placeholder="Digite o ID do livro" required>
             </div>
 
-            <button type="submit" class="submit-btn">Devolver Livro</button>
+            <button type="submit" id="buttons">Devolver Livro</button>
+            <a href="{% url 'solicitar_emprestimo' %}">Solicitar Empréstimo</a>
+            <a href="{% url 'Home' %}">Voltar a página principal</a>
+
         </form>
     </div>
 </body>

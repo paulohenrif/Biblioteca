@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     {% block style %}
-        <link rel="stylesheet" href="{% static 'css/lista_l.css' %}">
+        <link rel="stylesheet" href="{% static 'css/home.css' %}">
     {% endblock style %}
 
     <title>Página Inicial</title>
@@ -14,16 +14,16 @@
 <body>
 
     {% block main %}
-        <h1>Página Principal</h1>
             <ul>
+                <h1>Página Principal</h1>
                 <li><a href="{% url 'cadastrar_usuario' %}">Cadastrar Usuário</a></li>
                 <li><a href="{% url 'cadastrar_livro' %}">Cadastrar Livro</a></li>
                 <li><a href="{% url 'consultar_usuarios' %}">Consultar Usuários</a></li>
                 <li><a href="{% url 'consultar_acervo' %}">Consultar Acervo</a></li>
                 <li><a href="{% url 'solicitar_emprestimo' %}">Solicitar Empréstimo</a></li>
                 <li><a href="{% url 'solicitar_devolucao' %}">Devolver Livro</a></li>
-                {% comment %} <li><a href="{% url 'alterar_usuario' %}">Alterar Dados do Usuário</a></li>
-                <li><a href="{% url 'remover_usuario' %}">Remover Usuário</a></li> {% endcomment %}
+                <li><a href="">Alterar Dados do Usuário</a></li>
+                <li><a href="">Remover Usuário</a></li> 
             </ul>
     {% endblock main %}
 </body>
