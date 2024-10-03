@@ -41,7 +41,7 @@ form select {
 }
 
 form select:focus {
-    border-color: #66b3ff;
+    border-color: #ffb066;
     outline: none;
 }
 
@@ -60,6 +60,25 @@ form button {
 
 form button:hover {
     background-color: #005bb5;
+}
+
+a {
+    display: block;
+    text-align: center;
+    background-color: #66b3ff;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: bold;
+    margin: 20px auto;
+    max-width: 200px;
+}
+
+a:hover {
+    background-color: #005bb5c3;
+    transition: background-color 0.3s ease;
 }
 
 @media (max-width: 600px) {

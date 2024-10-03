@@ -1,28 +1,43 @@
 {% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-{% block style %}
-    <link rel="stylesheet" href="{% static 'css/css_consulta/consulta.css' %}">
-    <title>Consulta do Acervo</title>
-{% endblock style %}
+    {% block style %}
+        <link rel="stylesheet" href="{% static 'css/css_consulta/consulta.css' %}">
 
-<h1>Acervo de Livros</h1>
-<ul class="lista-livros">
-    {% for livro in livros %}
-        <li class="livro-item">
-            <div class="detalhes-livro">
-                <span class="livro-titulo"><strong>Titulo:</strong> {{ livro.titulo }}</span><br>
-                
-                <strong>Autor:</strong> {{ livro.autor }}<br>
+        <title>Consulta do Acervo</title>
 
-                <strong>Id:</strong> {{livro.id}} <br>
-                
-            </div>
-            <div class="emprestimo">
-                <a href="{% url 'solicitar_emprestimo' %}" class="botao-emprestar">Emprestar</a>
-                <span class="status">{{ livro.exemplares }} • {{ livro.status }}</span>
-            </div>
-        </li>
-        {% endfor %}
-    </ul>
-<a href="{% url 'cadastrar_livro' %}">Adicionar novo livro</a> <br>
-<a href="{% url 'Home' %}">Voltar a página principal</a>
+    {% endblock style %}
+</head>
+<body>
+
+    {% block main %}
+        <h1>Acervo de Livros</h1>
+
+        <ul class="lista-livros">
+            {% for livro in livros %}
+                <li class="livro-item">
+                    <div class="detalhes-livro">
+                        <span class="livro-titulo"><strong>Titulo:</strong> {{ livro.titulo }}</span><br>
+                        
+                        <strong>Autor:</strong> {{ livro.autor }}<br>
+
+                        <strong>Id:</strong> {{livro.id}} <br>
+                        
+                    </div>
+                    <div class="emprestimo">
+                        <span class="status">{{ livro.exemplares }} • {{ livro.status }}</span>
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+            
+        <a href="{% url 'solicitar_emprestimo' %}" class="botao-emprestar">Emprestar</a>
+        <a href="{% url 'cadastrar_livro' %}">Adicionar novo livro</a>
+        <a href="{% url 'Home' %}">Voltar a página principal</a>
+    {% endblock main %}
+</body>
+</html>
