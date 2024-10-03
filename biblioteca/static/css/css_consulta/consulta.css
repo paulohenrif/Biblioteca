@@ -5,6 +5,7 @@ body {
     background-color: #f5f5f5;
     margin: 0;
     padding: 20px;
+    font-size: 20px;
 }
 
 h1 {
@@ -47,7 +48,7 @@ ul.lista-livros {
 }
 
 .botao-emprestar {
-    background-color: #66b3ff;
+    background-color: #ffb066;
     color: white;
     padding: 10px 20px;
     border-radius: 4px;
@@ -59,7 +60,7 @@ ul.lista-livros {
 }
 
 .botao-emprestar:hover {
-    background-color: #005bb5c3;
+    background-color: #ff9839;
 }
 
 .status {
@@ -127,19 +128,4 @@ a:hover {
         padding: 10px;
         font-size: 14px;
     }
-
-    .livro-item {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .emprestimo {
-        margin-top: 10px;
-        width: 100%;
-        text-align: center;
-    }
-
-    .botao-emprestar {
-        width: 100%;
-    }
-}
+} 

@@ -29,13 +29,13 @@
                         
                     </div>
                     <div class="emprestimo">
-                        <span class="status">{{ livro.exemplares }} • {{ livro.status }}</span>
+                        <span class="status"><strong>{{ livro.exemplares }}</strong> {{ livro.status }}</span>
                     </div>
                 </li>
-                {% endfor %}
-            </ul>
+            {% endfor %}
+        </ul>
             
-        <a href="{% url 'solicitar_emprestimo' %}" class="botao-emprestar">Emprestar</a>
+        <a href="{% url 'solicitar_emprestimo' %}" class="botao-emprestar">Empréstimo</a>
         <a href="{% url 'cadastrar_livro' %}">Adicionar novo livro</a>
         <a href="{% url 'Home' %}">Voltar a página principal</a>
     {% endblock main %}

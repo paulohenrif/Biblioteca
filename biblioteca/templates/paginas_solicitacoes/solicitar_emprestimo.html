@@ -13,9 +13,9 @@
 </head>
 <body>
     {% block main %}
+    <form method="POST">
+        {% csrf_token %}
         <h1>Fazer Empréstimo</h1>
-        <form method="POST">
-            {% csrf_token %}
             
             <label for="livro">Livro:</label>
             <select name="livro_id" id="livro">
@@ -31,7 +31,8 @@
                 {% endfor %}
             </select>
 
-            <button type="submit">Solicitar Empréstimo</button>
+            <button type="submit" class="botao-emprestar">Solicitar Empréstimo</button>
+            <a href="{% url 'solicitar_devolucao' %}">Solicitar Devolução</a>
             <a href="{% url 'Home' %}">Voltar a página principal</a>
         </form>
     {% endblock main %}

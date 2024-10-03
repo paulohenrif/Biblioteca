@@ -1,5 +1,4 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -14,9 +13,8 @@
 </head>
 <body>
     <div class="container">
-        <h1>Solicitar Devolução do Livro</h1>
-
         <form method="POST" action="{% url 'solicitar_devolucao' %}">
+            <h1>Solicitar Devolução do Livro</h1>
             {% csrf_token %}
             <div class="form-group">
                 <label for="usuario_id">ID da Pessoa:</label>
@@ -28,10 +26,9 @@
                 <input type="text" id="livro_id" name="livro_id" placeholder="Digite o ID do livro" required>
             </div>
 
-            <button type="submit" id="buttons">Devolver Livro</button>
+            <button type="submit">Devolver Livro</button>
             <a href="{% url 'solicitar_emprestimo' %}">Solicitar Empréstimo</a>
             <a href="{% url 'Home' %}">Voltar a página principal</a>
-
         </form>
     </div>
 </body>
