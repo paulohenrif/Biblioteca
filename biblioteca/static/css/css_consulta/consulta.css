@@ -35,6 +35,7 @@ ul.lista-livros {
 .detalhes-livro {
     font-size: 1rem;
     color: #333;
+    width: 620px;
 }
 
 .detalhes-livro strong {
