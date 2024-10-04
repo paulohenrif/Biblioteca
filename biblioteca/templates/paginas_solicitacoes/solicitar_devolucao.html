@@ -12,24 +12,30 @@
     <title>Devolução de Livro</title>
 </head>
 <body>
-    <div class="container">
+    {% block main %}
         <form method="POST" action="{% url 'solicitar_devolucao' %}">
-            <h1>Solicitar Devolução do Livro</h1>
             {% csrf_token %}
-            <div class="form-group">
-                <label for="usuario_id">ID da Pessoa:</label>
-                <input type="text" id="usuario_id" name="usuario_id" placeholder="Digite o ID do usuário" required>
-            </div>
 
-            <div class="form-group">
-                <label for="livro_id">ID do Livro:</label>
-                <input type="text" id="livro_id" name="livro_id" placeholder="Digite o ID do livro" required>
-            </div>
+            <h1>Solicitar Devolução</h1>
+
+            <label for="usuario">Usuário:</label>
+            <select name="usuario_id" id="usuario">
+                {% for usuario in usuarios %}
+                    <option value="{{ usuario.id }}">{{ usuario.nome }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="livro">Livro:</label>
+            <select name="livro_id" id="livro">
+                {% for livro in livros %}
+                    <option value="{{ livro.id }}">{{ livro.titulo }}</option>
+                {% endfor %}
+            </select>
 
             <button type="submit">Devolver Livro</button>
             <a href="{% url 'solicitar_emprestimo' %}">Solicitar Empréstimo</a>
             <a href="{% url 'Home' %}">Voltar a página principal</a>
         </form>
-    </div>
+    {% endblock main %}
 </body>
 </html>
