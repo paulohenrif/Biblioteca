@@ -8,15 +8,27 @@ class Livro(models.Model):
     status = models.CharField(
         max_length=20,
         choices=[("disponível", "Disponível"), ("emprestado", "Emprestado")],
+        default="disponível",
     )
 
+    def save(self, *args, **kwargs):
+        if self.exemplares == 0:
+            self.status = "emprestado"
+        else:
+            self.status = "disponível"
+        super().save(*args, **kwargs)
+
     def __str__(self):
-        return self.titulo
+        if self.status == "emprestado":
+            return f"{self.titulo} ({self.status})"
+        else:
+            return f"{self.titulo} - {self.exemplares} exemplares ({self.status})"
 
 
 class Usuario(models.Model):
     nome = models.CharField(max_length=100)
     email = models.EmailField(max_length=254, unique=True)
+    curso = models.CharField(max_length=100)
     matricula = models.IntegerField(unique=True, blank=True, null=True)
 
     def save(self, *args, **kwargs):

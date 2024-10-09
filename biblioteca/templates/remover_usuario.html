@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    {% block style %}
+        <link rel="stylesheet" href="{% static 'css/css_solicitacoes/solicitacoes.css' %}">
+    {% endblock style %}
+
+    <title>Removeção de Usuários</title>
+</head>
+<body>
+    {% block main %}
+        <form method="POST">
+            {% csrf_token %}
+            <h1>Remover Usuário</h1>
+            
+            <label for="usuario">Usuário:</label>
+            <select name="usuario_id" id="usuario">
+                {% for usuario in usuarios %}
+                    <option value="{{ usuario.id }}">{{ usuario.nome }}</option>
+                {% endfor %}
+            </select>
+
+            <button type="submit" class="botao-emprestar">Remover Usuário</button>
+            <a href="{% url 'cadastrar_usuario' %}">Adicionar novo usuário</a>
+            <a href="{% url 'Home' %}">Voltar a página principal</a>
+        </form>
+    {% endblock main %}
+</body>
+</html>

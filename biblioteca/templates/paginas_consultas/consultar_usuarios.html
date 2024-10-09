@@ -17,17 +17,17 @@
         <table>
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Nome</th>
                     <th>Matrícula</th>
+                    <th>Nome</th>
+                    <th>Curso</th>
                 </tr>
             </thead>
             <tbody>
                 {% for usuario in usuarios %}
                 <tr>
-                    <td>{{ usuario.id }}</td>
+                    <td style="text-align: center;">{{ usuario.matricula }}</td>
                     <td>{{ usuario.nome }}</td>
-                    <td>{{ usuario.matricula }}</td>
+                    <td>{{ usuario.curso }}</td>
                 </tr>
                 {% endfor %}
             </tbody>

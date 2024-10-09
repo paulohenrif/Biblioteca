@@ -2,7 +2,6 @@ from django.shortcuts import render, redirect
 from biblioteca.models import Livro, Usuario, Emprestimo
 from django.http import HttpResponse
 
-
 def Home(request):
     return render(request, "home.html")
 
@@ -11,8 +10,9 @@ def cadastrar_usuario(request):
     if request.method == "POST":
         nome = request.POST.get("nome")
         email = request.POST.get("email")
+        curso = request.POST.get("curso")
         if nome:
-            Usuario.objects.create(nome=nome, email=email)
+            Usuario.objects.create(nome=nome, curso=curso, email=email)
         return redirect("consultar_usuarios")
 
     return render(request, "paginas_cadastros/cadastrar_usuario.html")
@@ -107,4 +107,25 @@ def solicitar_devolucao(request):
         request,
         "paginas_solicitacoes/solicitar_devolucao.html",
         {"livros": livros, "usuarios": usuarios},
+    )
+    
+
+def remover_usuario(request):
+    if request.method == "POST":
+        usuario_id = request.POST.get("usuario_id")
+        nome = Usuario.objects.filter(id=usuario_id)
+
+        if nome:
+            nome.delete()
+
+            return redirect("consultar_usuarios")
+        else:
+            return redirect("remover_usuario")
+
+    usuarios = Usuario.objects.all()
+
+    return render(
+        request,
+        "remover_usuario.html",
+        {"usuarios": usuarios},
     )

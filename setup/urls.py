@@ -13,4 +13,5 @@ urlpatterns = [
         "solicitar_emprestimo/", views.solicitar_emprestimo, name="solicitar_emprestimo"
     ),
     path("solicitar_devolucao/", views.solicitar_devolucao, name="solicitar_devolucao"),
+    path("remover_usuario/", views.remover_usuario, name="remover_usuario"),
 ]
