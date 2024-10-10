@@ -13,7 +13,7 @@
 </head>
 <body>
     {% block main %}
-        <h1>Lista de Pessoas Cadastradas</h1>
+        <h1>Lista de Usuários Cadastrados</h1>
         <table>
             <thead>
                 <tr>
@@ -34,6 +34,7 @@
         </table>
 
         <a href="{% url 'cadastrar_usuario' %}">Adicionar Novo Usuário</a>
+        <a href="{% url 'remover_usuario' %}">Remover Usuário</a>
         <a href="{% url 'Home' %}">Voltar a página principal</a>
     {% endblock main %}
 </body>

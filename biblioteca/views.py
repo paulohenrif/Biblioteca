@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from biblioteca.models import Livro, Usuario, Emprestimo
 from django.http import HttpResponse
 
+
 def Home(request):
     return render(request, "home.html")
 
@@ -108,7 +109,7 @@ def solicitar_devolucao(request):
         "paginas_solicitacoes/solicitar_devolucao.html",
         {"livros": livros, "usuarios": usuarios},
     )
-    
+
 
 def remover_usuario(request):
     if request.method == "POST":
