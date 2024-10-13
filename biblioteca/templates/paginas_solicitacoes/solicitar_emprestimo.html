@@ -30,6 +30,9 @@
                     <option value="{{ usuario.id }}">{{ usuario.nome }}</option>
                 {% endfor %}
             </select>
+            
+            <label for="data_devolucao">Data para devolução:</label>
+            <input type="date" name="data_devolucao" id="data_devolucao" class="custom-date-input" required>
 
             <button type="submit" class="botao-emprestar">Solicitar Empréstimo</button>
             <a href="{% url 'solicitar_devolucao' %}">Solicitar Devolução</a>

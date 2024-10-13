@@ -54,6 +54,32 @@ form select:focus {
     outline: none;
 }
 
+.custom-date-input {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 1em;
+    color: #333;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.custom-date-input:hover {
+    border-color: #888;
+}
+
+.custom-date-input:focus {
+    border-color: #5d9cec;
+    box-shadow: 0 0 5px rgba(93, 156, 236, 0.5);
+}
+
 form button {
     width: 100%;
     padding: 12px;

@@ -49,11 +49,14 @@ def solicitar_emprestimo(request):
     if request.method == "POST":
         livro_id = request.POST.get("livro_id")
         usuario_id = request.POST.get("usuario_id")
+        data_devolucao = request.POST.get("data_devolucao")
         livro = Livro.objects.get(id=livro_id)
         usuario = Usuario.objects.get(id=usuario_id)
 
         if livro.exemplares > 0:
-            Emprestimo.objects.create(livro=livro, usuario=usuario)
+            Emprestimo.objects.create(
+                livro=livro, usuario=usuario, data_devolucao=data_devolucao
+            )
             livro.exemplares -= 1
             livro.save()
 
