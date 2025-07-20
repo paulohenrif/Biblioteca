@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head><title>Empréstimos</title></head>
+<body>
+  <h2>Meus Empréstimos</h2>
+  <p><a href="{% url 'logout' %}">Sair</a></p>
+  <table border="1">
+    <tr><th>Livro</th><th>Data do Empréstimo</th><th>Data de Devolução</th><th>Ações</th></tr>
+    {% for emp in emprestimos %}
+    <tr>
+      <td>{{ emp.livro.titulo }}</td>
+      <td>{{ emp.data_emprestimo|date:"d/m/Y" }}</td>
+      <td>{{ emp.data_devolucao|date:"d/m/Y" }}</td>
+      <td>
+        {% if not emp.prazo_estendido and emp.usuario == user %}
+          <a href="{% url 'estender_prazo' emp.id %}">Estender Prazo</a>
+        {% else %}
+          {{ "Prazo já estendido" }}
+        {% endif %}
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+</body>
+</html>

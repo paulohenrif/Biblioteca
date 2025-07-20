@@ -17,27 +17,48 @@
         {% csrf_token %}
         <h1>Solicitar Empréstimo</h1>
             
-            <label for="livro">Livro:</label>
-            <select name="livro_id" id="livro">
-                {% for livro in livros %}
-                    <option value="{{ livro.id }}">{{ livro.titulo }}</option>
-                {% endfor %}
-            </select>
-        
-            <label for="usuario">Usuário:</label>
-            <select name="usuario_id" id="usuario">
-                {% for usuario in usuarios %}
-                    <option value="{{ usuario.id }}">{{ usuario.nome }}</option>
-                {% endfor %}
-            </select>
-            
-            <label for="data_devolucao">Data para devolução:</label>
-            <input type="date" name="data_devolucao" id="data_devolucao" class="custom-date-input" required>
+        <label for="livro">Livro:</label>
+        <select name="livro_id" id="livro">
+            {% for livro in livros %}
+                <option value="{{ livro.id }}">{{ livro.titulo }}</option>
+            {% endfor %}
+        </select>
+    
+        <label for="usuario">Usuário:</label>
+        <select name="usuario_id" id="usuario">
+            {% for usuario in usuarios %}
+                <option value="{{ usuario.id }}">{{ usuario.nome }}</option>
+            {% endfor %}
+        </select>
 
-            <button type="submit" class="botao-emprestar">Solicitar Empréstimo</button>
-            <a href="{% url 'solicitar_devolucao' %}">Solicitar Devolução</a>
-            <a href="{% url 'Home' %}">Voltar a página principal</a>
-        </form>
+        <button type="submit" class="botao-emprestar">Solicitar Empréstimo</button>
+        <a href="{% url 'solicitar_devolucao' %}">Solicitar Devolução</a>
+        <a href="{% url 'Home' %}">Voltar à página principal</a>
+    </form>
+
+    <hr>
+
+    <h2>Meus Empréstimos</h2>
+    <div class="lista-emprestimos">
+        {% for emp in emprestimos %}
+            <div class="emprestimo-item">
+                <p><strong>Livro:</strong> {{ emp.livro.titulo }}</p>
+                <p><strong>Prazo Final:</strong> {{ emp.prazo_final|date:"d/m/Y" }}</p>
+                <p><strong>Dias Restantes:</strong> {{ emp.tempo_restante }} dias</p>
+
+                {% if emp.pode_estender %}
+                    <form action="{% url 'estender_prazo' emp.id %}" method="POST">
+                        {% csrf_token %}
+                        <button type="submit" class="botao-estender">Estender Prazo (+30 dias)</button>
+                    </form>
+                {% else %}
+                    <p><em>Prazo já estendido.</em></p>
+                {% endif %}
+            </div>
+        {% empty %}
+            <p>Nenhum empréstimo ativo.</p>
+        {% endfor %}
+    </div>
     {% endblock main %}
 </body>
 </html>
