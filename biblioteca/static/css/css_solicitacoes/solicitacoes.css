@@ -28,7 +28,7 @@ form {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     max-width: 400px;
     width: 100%;
-    margin: 0 auto 40px auto;
+    margin: auto;
 }
 
 form label {
