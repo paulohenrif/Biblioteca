@@ -17,13 +17,13 @@
             <h1>Cadastro de Usuário</h1>
             {% csrf_token %}
             <label for="nome">Nome:</label>
-            <input type="text" name="nome" id="nome" required autocomplete="none" placeholder="Samara Martins">
+            <input type="text" name="nome" id="nome" required autocomplete="off" placeholder="Samara Martins">
         
             <label for="curso">Curso:</label>
-            <input type="curso" name="curso" id="curso" required autocomplete="none" placeholder="Sistemas de Informação">
+            <input type="curso" name="curso" id="curso" required autocomplete="off" placeholder="Sistemas de Informação">
         
             <label for="email">Email:</label>
-            <input type="email" name="email" id="email" required autocomplete="none" placeholder="example@gmail.com">
+            <input type="email" name="email" id="email" required autocomplete="off" placeholder="example@gmail.com">
             
             <button type="submit" id="buttons">Criar</button>
             <a href="{% url 'consultar_usuarios' %}">Lista de usuários</a>

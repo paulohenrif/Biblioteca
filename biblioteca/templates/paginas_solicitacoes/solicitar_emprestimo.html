@@ -36,9 +36,9 @@
         <a href="{% url 'Home' %}">Voltar à página principal</a>
     </form>
 
-    <hr>
+    {% comment %} <hr> {% endcomment %}
 
-    <h2>Meus Empréstimos</h2>
+    {% comment %} <h2>Meus Empréstimos</h2>
     <div class="lista-emprestimos">
         {% for emp in emprestimos %}
             <div class="emprestimo-item">
@@ -58,7 +58,7 @@
         {% empty %}
             <p>Nenhum empréstimo ativo.</p>
         {% endfor %}
-    </div>
+    </div> {% endcomment %}
     {% endblock main %}
 </body>
 </html>
