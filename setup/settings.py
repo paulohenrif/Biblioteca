@@ -10,8 +10,7 @@ SECRET_KEY = config("SECRET_KEY")
 DEBUG = config("DEBUG", cast=bool, default=False)
 
 # ALLOWED_HOSTS = config("ALLOWED_HOSTS", cast=Csv(), default=[])
-# ALLOWED_HOSTS = ['biblioteca-sigma-fawn.vercel.app', 'localhost', '127.0.0.1']
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['biblioteca-sigma-fawn.vercel.app', 'localhost', '127.0.0.1']
 
 
 INSTALLED_APPS = [
