@@ -1,5 +1,6 @@
 from pathlib import Path
 from decouple import config, Csv
+import dj_database_url
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -7,7 +8,8 @@ SECRET_KEY = config("SECRET_KEY")
 
 DEBUG = config("DEBUG", cast=bool, default=False)
 
-ALLOWED_HOSTS = config("ALLOWED_HOSTS", cast=Csv())
+ALLOWED_HOSTS = config("ALLOWED_HOSTS", cast=Csv(), default=[])
+
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -16,8 +18,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+
     "biblioteca.apps.BibliotecaConfig",
-    "setup",
 ]
 
 MIDDLEWARE = [
@@ -50,21 +52,20 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "setup.wsgi.application"
 
-DATABASES = {
-    # "default": {
-    #     "ENGINE": "django.db.backends.postgresql",
-    #     "NAME": "Biblioteca",
-    #     "USER": "postgres",
-    #     "PASSWORD": "paulo,123",
-    #     "HOST": "localhost",
-    #     "PORT": "5432",
-    # }
+DATABASE_URL = config("DATABASE_URL", default="")
 
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+if DATABASE_URL:
+    DATABASES = {
+        "default": dj_database_url.parse(DATABASE_URL)
     }
-}
+else:
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": BASE_DIR / "db.sqlite3",
+        }
+    }
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -89,6 +90,7 @@ USE_I18N = True
 
 USE_TZ = True
 
-STATIC_URL = "static/"
+STATIC_URL = "/static/"
+STATIC_ROOT = BASE_DIR / "staticfiles"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
